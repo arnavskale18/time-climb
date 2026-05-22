@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload | Time Climb</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        .drop-zone {
+            height: 250px;
+            border: 2px dashed var(--border);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.2s;
+            cursor: pointer;
+            margin-bottom: 32px;
+        }
+        .drop-zone:hover {
+            border-color: var(--accent);
+            background: rgba(99, 102, 241, 0.05);
+        }
+        .file-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        .file-status {
+            margin-left: auto;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: var(--font-mono);
+            letter-spacing: 1px;
+        }
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo-icon">T</div>
+                <span class="logo-text">Time Climb</span>
+            </div>
+            <nav class="nav-list">
+                <a href="dashboard.html" class="nav-item">Dashboard</a>
+                <a href="planner.html" class="nav-item">Planner</a>
+                <a href="analytics.html" class="nav-item">Analytics</a>
+                <a href="coach.html" class="nav-item">AI Coach</a>
+                <a href="settings.html" class="nav-item">Settings</a>
+                <a href="#" class="nav-item" id="logout-btn" style="margin-top: auto; color: #ef4444;">
+                    <span class="icon" data-icon="logout"></span>
+                    End Climb
+                </a>
+            </nav>
+            <div style="font-size:11px;color:var(--text-s);font-family:var(--font-mono);">v1.4.2-PROD</div>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div>
+                    <h1 style="font-size:24px;font-weight:600">The Repository of Knowledge</h1>
+                    <p style="color:var(--text-s);font-size:14px">Feed the engine your academic materials.</p>
+                </div>
+                <div class="user-profile">
+                    <div style="text-align:right">
+                        <div style="font-size:14px;font-weight:500">Scholar Smith</div>
+                        <div style="font-size:12px;color:var(--accent)">Elite Member</div>
+                    </div>
+                    <div class="avatar"></div>
+                </div>
+            </header>
+
+            <div class="drop-zone" id="drop-zone">
+                <div style="font-size: 32px; color: var(--accent);">↑</div>
+                <div style="text-align: center">
+                    <h3 style="font-size: 18px; margin-bottom: 4px;">Drop study materials here</h3>
+                    <p style="color: var(--text-s); font-size: 13px;">PDF, Markdown, or MP3 Lectures (Max 50MB)</p>
+                </div>
+            </div>
+
+            <div>
+                <h3 style="margin-bottom: 16px; font-size: 16px;">Ingested Context</h3>
+                <div class="file-card">
+                    <div class="file-icon">📄</div>
+                    <div>
+                        <p style="font-size: 14px; font-weight: 500;">Lecture_Notes_Week_12.pdf</p>
+                        <p style="font-size: 12px; color: var(--text-s);">2.4 MB • Processing Complete</p>
+                    </div>
+                    <div class="file-status">ANALYZED</div>
+                </div>
+                <div class="file-card">
+                    <div class="file-icon">📄</div>
+                    <div>
+                        <p style="font-size: 14px; font-weight: 500;">Neural_Networks_Thesis.pdf</p>
+                        <p style="font-size: 12px; color: var(--text-s);">4.1 MB • AI Indexed</p>
+                    </div>
+                    <div class="file-status">VECTORIZED</div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | Time Climb</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+        }
+        .auth-card {
+            width: 450px;
+            padding: 48px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .logo-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .logo-center .logo-icon {
+            width: 48px;
+            height: 48px;
+            font-size: 24px;
+        }
+        .logo-center .logo-text {
+            font-size: 24px;
+        }
+        .form-group { margin-bottom: 0; }
+        .form-group label { display: block; font-size: 11px; color: var(--text-s); margin-bottom: 8px; font-family: var(--font-mono); }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            color: var(--text-p);
+            border-radius: 8px;
+            outline: none;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-card">
+        <div class="logo-center">
+            <div class="logo-icon">T</div>
+            <div class="logo-text">TIME CLIMB</div>
+        </div>
+
+        <div style="text-align: center">
+            <h2 style="font-size: 24px; margin-bottom: 8px;">Begin Arrival</h2>
+            <p style="color: var(--text-s); font-size: 14px;">Establish your profile on the astral peak.</p>
+        </div>
+
+        <form id="signup-form" style="display: flex; flex-direction: column; gap: 20px;">
+            <div class="form-group">
+                <label>FULL NAME</label>
+                <input type="text" id="full-name" placeholder="Scholar Smith" required>
+            </div>
+            <div class="form-group">
+                <label>ACADEMIC EMAIL</label>
+                <input type="email" id="email" placeholder="scholar@university.edu" required>
+            </div>
+            <div class="form-group">
+                <label>SECURITY KEY</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%; padding: 14px;">ESTABLISH PROFILE</button>
+        </form>
+
+        <div style="text-align: center; font-size: 14px; color: var(--text-s);">
+            Already climbing? <a href="login.html" style="color: var(--accent); font-weight: 500;">Back to Ascent</a>
+        </div>
+    </div>
+    <script type="module" src="assets/js/auth.js"></script>
+</body>
+</html>
+

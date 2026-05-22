@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coach | Time Climb</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        .main-content { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+        .chat-header { padding: 24px 32px; border-bottom: 1px solid var(--border); background: var(--bg); }
+        .chat-view {
+            flex: 1;
+            overflow-y: auto;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .message {
+            max-width: 80%;
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .message.coach {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            align-self: flex-start;
+            color: var(--text-p);
+        }
+        .message.user {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            align-self: flex-end;
+            color: var(--text-p);
+        }
+        .chat-input-container {
+            padding: 24px 32px;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+        .chat-input-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            padding: 8px;
+            border-radius: 12px;
+        }
+        .chat-input-wrapper input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: var(--text-p);
+            padding: 0 16px;
+            outline: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo-icon">T</div>
+                <span class="logo-text">Time Climb</span>
+            </div>
+            <nav class="nav-list">
+                <a href="dashboard.html" class="nav-item">Dashboard</a>
+                <a href="planner.html" class="nav-item">Planner</a>
+                <a href="analytics.html" class="nav-item">Analytics</a>
+                <a href="coach.html" class="nav-item active">AI Coach</a>
+                <a href="settings.html" class="nav-item">Settings</a>
+                <a href="#" class="nav-item" id="logout-btn" style="margin-top: auto; color: #ef4444;">
+                    <span class="icon" data-icon="logout"></span>
+                    End Climb
+                </a>
+            </nav>
+            <div style="font-size:11px;color:var(--text-s);font-family:var(--font-mono);">v1.4.2-PROD</div>
+        </aside>
+        <main class="main-content">
+            <div class="chat-header">
+                <h1 style="font-size:20px;font-weight:600">The Oracle of Focus</h1>
+                <p style="color:var(--text-s);font-size:12px">Personalized synthesis and guidance.</p>
+            </div>
+
+            <div class="chat-view">
+                <div class="message coach">
+                    Greetings, Scholar. I have analyzed your last 12 study sessions and the uploaded materials for Quantum Mechanics. Would you like a synthesis of the Heisenberg Uncertainty Principle as it relates to the recent lecture?
+                </div>
+                <div class="message user">
+                    Yes, and please highlight any contradictions between the textbook and the professor's notes.
+                </div>
+                <div class="message coach">
+                    Understood. I've noted a slight difference in the interpretation of the Observer Effect on page 142 compared to Lecturer Thorne's slide 22. Generating comparative synthesis now...
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <input type="text" placeholder="Consult the Oracle...">
+                    <button class="btn-primary">SEND</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>

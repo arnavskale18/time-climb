@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | Time Climb</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        .settings-layout {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 48px;
+        }
+        .settings-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .settings-nav-item {
+            padding: 8px 0;
+            color: var(--text-s);
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+        .settings-nav-item.active {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        .section-title { font-size: 18px; margin-bottom: 24px; }
+        .toggle-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .toggle-switch {
+            width: 40px;
+            height: 22px;
+            background: var(--border);
+            border-radius: 99px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            left: 2px;
+            top: 2px;
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        .toggle-switch.active { background: var(--accent); }
+        .toggle-switch.active::after { left: 20px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 11px; color: var(--text-s); margin-bottom: 8px; font-family: var(--font-mono); }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            color: var(--text-p);
+            border-radius: 8px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo-area">
+                <div class="logo-icon">T</div>
+                <span class="logo-text">Time Climb</span>
+            </div>
+            <nav class="nav-list">
+                <a href="dashboard.html" class="nav-item">Dashboard</a>
+                <a href="planner.html" class="nav-item">Planner</a>
+                <a href="analytics.html" class="nav-item">Analytics</a>
+                <a href="coach.html" class="nav-item">AI Coach</a>
+                <a href="settings.html" class="nav-item active">Settings</a>
+                <a href="#" class="nav-item" id="logout-btn" style="margin-top: auto; color: #ef4444;">
+                    <span class="icon" data-icon="logout"></span>
+                    End Climb
+                </a>
+            </nav>
+            <div style="font-size:11px;color:var(--text-s);font-family:var(--font-mono);">v1.4.2-PROD</div>
+        </aside>
+        <main class="main-content">
+            <header class="header">
+                <div>
+                    <h1 style="font-size:24px;font-weight:600">The Astral Engine Settings</h1>
+                    <p style="color:var(--text-s);font-size:14px">Calibrate your academic experience.</p>
+                </div>
+            </header>
+
+            <div class="settings-layout">
+                <div class="settings-nav">
+                    <div class="settings-nav-item active">Account</div>
+                    <div class="settings-nav-item">Notifications</div>
+                    <div class="settings-nav-item">Deep Work UI</div>
+                    <div class="settings-nav-item">AI Model</div>
+                    <div class="settings-nav-item">Telemetry</div>
+                </div>
+
+                <div>
+                    <div class="card" style="margin-bottom: 32px;">
+                        <h3 class="section-title">Deep Work Mode</h3>
+                        <div class="toggle-row">
+                            <div>
+                                <p style="font-size: 14px; font-weight: 500;">Ambient Soundtrack</p>
+                                <p style="font-size: 12px; color: var(--text-s);">Play low-fi spatial audio during sessions.</p>
+                            </div>
+                            <div class="toggle-switch active"></div>
+                        </div>
+                        <div class="toggle-row">
+                            <div>
+                                <p style="font-size: 14px; font-weight: 500;">Visual Focus Guard</p>
+                                <p style="font-size: 12px; color: var(--text-s);">Dim non-essential UI elements during deep work.</p>
+                            </div>
+                            <div class="toggle-switch active"></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="section-title">Profile Information</h3>
+                        <div class="form-group">
+                            <label>DISPLAY NAME</label>
+                            <input type="text" value="Scholar Smith">
+                        </div>
+                        <div class="form-group">
+                            <label>ACADEMIC FIELD</label>
+                            <input type="text" value="Theoretical Physics">
+                        </div>
+                        <button class="btn-primary">SAVE CALIBRATION</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script type="module" src="assets/js/main.js"></script>
+    <script>
+        document.querySelectorAll('.toggle-switch').forEach(sw => {
+            sw.addEventListener('click', () => sw.classList.toggle('active'));
+        });
+    </script>
+</body>
+</html>

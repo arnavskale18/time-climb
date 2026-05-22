@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics | Time Climb</title>
+
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        .chart-container {
+            padding: 24px;
+            min-height: 300px;
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .analytics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card[style*="grid-column"] {
+                grid-column: span 1 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+
+        <aside class="sidebar" id="sidebar">
+            <div class="logo-area">
+                <div class="logo-icon">T</div>
+                <span class="logo-text">Time Climb</span>
+            </div>
+
+            <nav class="nav-list">
+                <a href="dashboard.html" class="nav-item">Dashboard</a>
+                <a href="planner.html" class="nav-item">Planner</a>
+                <a href="analytics.html" class="nav-item">Analytics</a>
+                <a href="coach.html" class="nav-item">AI Coach</a>
+                <a href="settings.html" class="nav-item">Settings</a>
+                <a href="#" class="nav-item" id="logout-btn" style="margin-top: auto; color: #ef4444;">
+                    <span class="icon" data-icon="logout"></span>
+                    End Climb
+                </a>
+            </nav>
+
+            <div style="font-size:11px;color:var(--text-s);font-family:var(--font-mono);">
+                v1.4.2-PROD
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="header">
+                <div>
+                    <h1 style="font-size:24px;font-weight:600">
+                        Performance Intelligence
+                    </h1>
+
+                    <p style="color:var(--text-s);font-size:14px">
+                        Analyzing your academic trajectory.
+                    </p>
+                </div>
+
+                <div class="user-profile">
+                    <div style="text-align:right">
+                        <div style="font-size:14px;font-weight:500">
+                            Scholar Smith
+                        </div>
+
+                        <div style="font-size:12px;color:var(--accent)">
+                            Elite Member
+                        </div>
+                    </div>
+
+                    <div class="avatar"></div>
+                </div>
+            </header>
+
+            <div class="analytics-grid">
+
+                <div class="card chart-container">
+                    <h3 style="margin-bottom:16px;font-size:16px;">
+                        Depth Velocity (7 Days)
+                    </h3>
+
+                    <canvas id="velocityChart"></canvas>
+                </div>
+
+                <div class="card chart-container">
+                    <h3 style="margin-bottom:16px;font-size:16px;">
+                        Context Retention
+                    </h3>
+
+                    <canvas id="retentionChart"></canvas>
+                </div>
+
+                <div class="card chart-container" style="grid-column: span 2;">
+                    <h3 style="margin-bottom:16px;font-size:16px;">
+                        Climb History
+                    </h3>
+
+                    <canvas id="climbChart"></canvas>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <script type="module" src="assets/js/main.js"></script>
+
+    <script>
+        Chart.defaults.color = '#a1a1aa';
+        Chart.defaults.borderColor = '#27272a';
+
+        // Velocity Chart
+        const ctxVelocity = document
+            .getElementById('velocityChart')
+            .getContext('2d');
+
+        new Chart(ctxVelocity, {
+            type: 'line',
+
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+
+                datasets: [{
+                    label: 'Study Hours',
+
+                    data: [4, 6, 5, 8, 3, 2, 5],
+
+                    borderColor: '#6366f1',
+
+                    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+
+                    fill: true,
+
+                    tension: 0.4
+                }]
+            },
+
+            options: {
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+
+                scales: {
+                    y: {
+                        grid: {
+                            color: '#27272a'
+                        }
+                    },
+
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Retention Radar Chart
+        const ctxRetention = document
+            .getElementById('retentionChart')
+            .getContext('2d');
+
+        new Chart(ctxRetention, {
+            type: 'radar',
+
+            data: {
+                labels: [
+                    'Logic',
+                    'Memory',
+                    'Focus',
+                    'Speed',
+                    'Depth'
+                ],
+
+                datasets: [{
+                    label: 'Score',
+
+                    data: [85, 70, 92, 78, 95],
+
+                    borderColor: '#a855f7',
+
+                    backgroundColor: 'rgba(168, 85, 247, 0.2)'
+                }]
+            },
+
+            options: {
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                scales: {
+                    r: {
+                        grid: {
+                            color: '#27272a'
+                        },
+
+                        angleLines: {
+                            color: '#27272a'
+                        },
+
+                        ticks: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Climb History Chart
+        const ctxClimb = document
+            .getElementById('climbChart')
+            .getContext('2d');
+
+        new Chart(ctxClimb, {
+            type: 'bar',
+
+            data: {
+                labels: [
+                    'Week 1',
+                    'Week 2',
+                    'Week 3',
+                    'Week 4',
+                    'Week 5'
+                ],
+
+                datasets: [{
+                    label: 'Performance Index',
+
+                    data: [62, 70, 78, 82, 91],
+
+                    backgroundColor: 'rgba(99, 102, 241, 0.7)',
+
+                    borderRadius: 8
+                }]
+            },
+
+            options: {
+                responsive: true,
+
+                maintainAspectRatio: false,
+
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+
+                scales: {
+                    y: {
+                        grid: {
+                            color: '#27272a'
+                        }
+                    },
+
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

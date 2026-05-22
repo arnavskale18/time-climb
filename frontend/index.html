@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Climb | The Astral Study System</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        body { overflow-y: auto; }
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 24px;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: var(--ai-gradient);
+            filter: blur(150px);
+            opacity: 0.1;
+            z-index: 0;
+            border-radius: 50%;
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; }
+        .hero-title {
+            font-size: 80px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            line-height: 1;
+            margin-bottom: 24px;
+            background: linear-gradient(to bottom, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-sub {
+            font-size: 20px;
+            color: var(--text-s);
+            margin-bottom: 48px;
+            line-height: 1.6;
+        }
+        .nav-landing {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-landing">
+        <div class="logo-area" style="margin-bottom:0;">
+            <div class="logo-icon">T</div>
+            <span class="logo-text">Time Climb</span>
+        </div>
+        <div class="flex" style="gap: 24px; align-items: center">
+            <a href="login.html" style="font-size:14px; font-weight:500; color:var(--text-s)">Sign In</a>
+            <a href="signup.html" class="btn-primary">Join the Ascent</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-content">
+            <span class="ai-badge" style="margin-bottom: 24px">AI-Powered Performance</span>
+            <h1 class="hero-title">Ascend Your <br> Intellect.</h1>
+            <p class="hero-sub">The world's first astral study engine. Time Climb uses AI to map your academic trajectory, predict peak focus, and synthesize complex modules into actionable ascents.</p>
+            <div class="flex" style="gap: 16px; justify-content: center">
+                <a href="signup.html" class="btn-primary" style="padding: 16px 32px; font-size: 16px;">Begin Your First Climb</a>
+                <a href="#features" class="btn-primary" style="background: rgba(255,255,255,0.05); border: 1px solid var(--border); padding: 16px 32px; font-size: 16px;">View Exploration Data</a>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
+
