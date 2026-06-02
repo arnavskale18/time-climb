@@ -4,9 +4,15 @@
  */
 
 import { apiClient } from './api.js';
-import { updateState, saveState } from './state.js';
+import { updateState, saveState, getState } from './state.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Redirect to dashboard if already authenticated
+    const state = getState();
+    if (state.auth.isAuthenticated) {
+        window.location.href = 'dashboard.html';
+        return;
+    }
     initAuthForms();
 });
 

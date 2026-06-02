@@ -37,6 +37,38 @@ export const appState = {
 const STORAGE_KEY = 'timeclimb_state';
 
 /**
+ * Helper to check if a JWT token is expired
+ */
+function isTokenExpired(token) {
+    if (!token) return true;
+    try {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(c => 
+            '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+        ).join(''));
+        const payload = JSON.parse(jsonPayload);
+        return payload.exp * 1000 < Date.now();
+    } catch (e) {
+        return true;
+    }
+}
+
+/**
+ * Deep merge source object into target object recursively
+ */
+function deepMerge(target, source) {
+    for (const key in source) {
+        if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
+            if (!target[key]) target[key] = {};
+            deepMerge(target[key], source[key]);
+        } else {
+            target[key] = source[key];
+        }
+    }
+}
+
+/**
  * Load saved state from localStorage
  */
 export function loadState() {
@@ -47,14 +79,21 @@ export function loadState() {
 
         const parsedState = JSON.parse(savedState);
 
-        // Merge saved state into appState
-        Object.assign(appState, parsedState);
+        // Merge saved state into appState using deep merge
+        deepMerge(appState, parsedState);
 
-        console.log('State loaded successfully');
+        // Validate token expiry if authenticated
+        if (appState.auth.token && isTokenExpired(appState.auth.token)) {
+            console.warn('Persisted session token has expired. Resetting state.');
+            resetState();
+        } else {
+            console.log('State loaded successfully');
+        }
     } catch (error) {
         console.error('Failed to load state:', error);
     }
 }
+
 
 /**
  * Save entire state to localStorage
