@@ -12,6 +12,8 @@ from app.api.analytics import router as analytics_router
 from app.api.uploads import router as uploads_router
 from app.api.coach import router as coach_router
 from app.api.settings_api import router as settings_router
+from app.api.subjects import router as subjects_router
+
 
 settings = get_settings()
 logger = get_logger(__name__)
@@ -43,6 +45,8 @@ app.include_router(analytics_router, prefix=API_PREFIX)
 app.include_router(uploads_router,   prefix=API_PREFIX)
 app.include_router(coach_router,     prefix=API_PREFIX)
 app.include_router(settings_router,  prefix=API_PREFIX)
+app.include_router(subjects_router,   prefix=API_PREFIX)
+
 
 # ── Health check ───────────────────────────────────────
 @app.get("/health", tags=["Health"])
